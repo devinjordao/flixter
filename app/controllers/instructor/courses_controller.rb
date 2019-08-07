@@ -11,7 +11,7 @@ class Instructor::CoursesController < ApplicationController
       redirect_to instructor_course_path(@course)
     else
       render :new, status: :unprocessable_entity
-    end
+    end/show
   end
 
   def show
