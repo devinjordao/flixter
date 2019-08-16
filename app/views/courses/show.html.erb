@@ -5,18 +5,18 @@
   <br />
   <%= image_tag @course.image_url.to_s, class: 'img-fluid' %>
   <br />
+  <br />
   <div class="row">
-    <div class="col-sm-4 col-12 text center">
+    <div class="col-sm-4 text center">
       <span class="badge badge-default">
         <%= number_to_currency @course.cost %>
       </span>
-
-      <% if current_user && current_user == @course.user %>
-      <br />
-      <br />
-      <%= link_to 'Administrater', instructor_course_path(@course), class: 'btn btn-danger btn large float-right' %>
-      <% end %>
     </div>
+      <% if current_user && current_user == @course.user %>
+    <div class="col">
+      <%= link_to 'Administrater', instructor_course_path(@course), class: 'btn btn-danger btn large float-right' %>
+    </div>
+    <% end %>
 
     <div class="col-sm-8 col-12">
       <%= @course.description %>
