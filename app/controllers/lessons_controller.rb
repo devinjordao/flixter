@@ -8,7 +8,7 @@ class LessonsController < ApplicationController
   private
 
   def enrolled_in_current_course
-    if current_user != current_user.enrolled_in?(current_lesson.section.course)
+    if !(current_user.enrolled_in?(current_lesson.section.course))
       redirect_to course_path(current_lesson.section.course), alert: 'Not Enrolled'
     end
   end
