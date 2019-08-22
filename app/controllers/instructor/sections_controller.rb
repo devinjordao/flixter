@@ -1,6 +1,7 @@
 class Instructor::SectionsController < ApplicationController
   before_action :authenticate_user!
-  before_action :require_authorized_for_current_section, only: [:update]
+  before_action :require_authorized_for_current_course, only: [:create]
+  before_action :require_authorized_for_current_course, only: [:update]
 
 
   def create
@@ -21,7 +22,7 @@ class Instructor::SectionsController < ApplicationController
 
   def require_authorized_for_current_section
     if current_section.course.user != current_user
-      render plain: 'Unauthorized', status: :unauthorized
+      return render plain: 'Unauthorized', status: :unauthorized
     end
   end
 
@@ -38,11 +39,7 @@ class Instructor::SectionsController < ApplicationController
 
   helper_method :current_course
   def current_course
-    if params[:course_id]
-      @current_course ||= Course.find(params[:course_id])
-    else
-      current_section.course
-    end
+    @current_course ||= Course.find(params[:course_id])
   end
 
   def section_params

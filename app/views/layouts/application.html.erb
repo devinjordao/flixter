@@ -50,9 +50,8 @@
       <% if alert.present? %>
         <p class="alert alert-danger"><%= alert %></p>
       <% end %>
-
-      <%= yield %>
     </div>
+      <%= yield %>
 
     <div id="footer">
       <div class="container">
@@ -87,10 +86,14 @@
             <br />
             <br />
             <%= link_to 'http://github.com/devinjordao' do %>
-              <span class="fa fa-github-square fa-2x social-button"></span>
+              <span class="fab fa-github-square fa-2x social-button"></span>
             <% end %>
-            <span class="fa fa-facebook-square fa-2x social-button"></span>
-            <span class="fa fa-twitter-square fa-2x social-button"></span>
+            <%= link_to 'http://facebook.com' do %>
+              <span class="fab fa-facebook-square fa-2x social-button"></span> 
+            <% end %>     
+            <%= link_to 'http://twitter.com' do %>
+              <span class="fab fa-twitter-square fa-2x social-button"></span>
+            <% end %>
           </div>
         </div>
       </div>
